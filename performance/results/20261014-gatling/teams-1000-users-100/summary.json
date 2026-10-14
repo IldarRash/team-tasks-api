@@ -1,0 +1,57 @@
+{
+  "profile": "teams-1000-users-100",
+  "teams": 1000,
+  "users": 100,
+  "seedTasks": 10000,
+  "rps": 431.67,
+  "tps": 107.92,
+  "exactEventWindowRps": 436.4733378640455,
+  "exactEventWindowTps": 109.11833446601138,
+  "requests": 26332,
+  "httpSeconds": 60.329,
+  "failedRequests": 0,
+  "failedTransactions": 0,
+  "httpLatencyMs": {
+    "p50": 197,
+    "p95": 526,
+    "p99": 809
+  },
+  "transactionLatencyMs": {
+    "p50": 798,
+    "p95": 1832,
+    "p99": 2450
+  },
+  "sampleCount": 12,
+  "baselineJvmLiveThreads": 125.0,
+  "sampledMaxJvmLiveThreads": 131.0,
+  "jvmLifetimePeakThreads": 131.0,
+  "startedThreadsInSampleWindow": 4.0,
+  "sampledMaxOsThreads": 140,
+  "baselineRssMiB": 319.609375,
+  "sampledMaxRssMiB": 426.90625,
+  "sampledMaxHeapUsedMiB": 106.25232696533203,
+  "sampledMaxHeapCommittedMiB": 247.5625,
+  "reportedHeapMaxMiB": 494.9375,
+  "sampledMaxApiDockerMemMiB": 416.0,
+  "sampledMaxDbDockerMemMiB": 99.56,
+  "sampledMaxApiCpuCorePercent": 209.9,
+  "sampledMaxDbCpuCorePercent": 107.17,
+  "sampledMaxDbActiveConnections": 20.0,
+  "gcCountInSampleWindow": 16.0,
+  "gcPauseSecondsInSampleWindow": 0.19099999999999995,
+  "generatorSampledMaxRssMiB": 365.00390625,
+  "generatorSampledMaxOsThreads": 67,
+  "generatorValidSamples": 11,
+  "nativeMemoryBaseline": {
+    "reservedMiB": 2017.650390625,
+    "committedMiB": 393.849609375
+  },
+  "nativeMemoryUnderLoad": {
+    "reservedMiB": 2100.7021484375,
+    "committedMiB": 481.6982421875
+  },
+  "nativeMemoryAfter": {
+    "reservedMiB": 2065.208984375,
+    "committedMiB": 447.470703125
+  }
+}

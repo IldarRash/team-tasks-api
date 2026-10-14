@@ -29,9 +29,9 @@ Bounded source review performed by root; no claim of an independent isolated rev
 
 OpenAPI YAML and all local references parsed using SnakeYAML from the build dependencies. Python scripts parsed for syntax. Archive packaging preserves Git executable mode for gradlew, excludes .git/build/volumes/secrets and selects only tracked files.
 
-## Load measurements
+## Historical Python load measurements
 
-`python scripts/load_test.py --users 20 --warmup 30 --seconds 60`: both scenarios passed. Docker reports 16 CPUs and 16,741,457,920 bytes available memory. Client: Windows 10 / Python 3.12.14. Local loopback HTTP; PostgreSQL and API run in Docker on the same host. No production SLA or infrastructure generalization is claimed.
+The previous Python generator has been removed. Its original report is retained at performance/historical/python-load.json. Both previous scenarios passed. Docker reported 16 CPUs and 16,741,457,920 bytes available memory. Client: Windows10 / Python3.12.14. The canonical load suite is now [Gatling](../performance/README.md); its dataset, resource limits and instrumentation differ, so these older rates must not be compared directly.
 
 | Scenario | Successful four-request workflows | HTTP requests/s | Workflow latency p50 / p95 / p99 ms | Unexpected errors |
 |---|---:|---:|---|---:|
@@ -47,4 +47,4 @@ Each measurement ran for about 60 seconds after 30 seconds warmup with 20 users.
 - Archive paths/exclusions and Unix executable metadata for gradlew checked. Unpacked sources successfully ran `gradlew.bat --no-daemon test bootJar` with a fresh build directory and shared dependency cache: 9 unit tests passed, 2 DB tests explicitly skipped. DB integration evidence comes from the earlier enabled run, not this archive unit-only build.
 - Linux Docker build and Windows host/archive build verified; macOS and a clean machine without dependency caches were not tested.
 
-Raw successful HTTP, load and restart reports are retained in [verification-results](verification-results/). Earlier failures were fixed or excluded with reasons above; no synthetic successful report was substituted.
+Raw HTTP and restart reports are retained in [verification-results](verification-results/). The historical Python report moved to performance/historical/. Canonical Gatling and profiling results live in performance/results/. Earlier failures were fixed or excluded with reasons above; no synthetic successful report was substituted.

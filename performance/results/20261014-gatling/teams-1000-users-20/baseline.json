@@ -1,0 +1,40 @@
+{
+  "epochMs": 1792003457650,
+  "jvmLiveThreads": 44.0,
+  "jvmPeakThreads": 44.0,
+  "jvmStartedThreads": 48.0,
+  "jvmDaemonThreads": 40.0,
+  "heapUsedBytes": 32224968.0,
+  "heapCommittedBytes": 259588096.0,
+  "heapMaxBytes": 518979584.0,
+  "dbActiveConnections": 0.0,
+  "gcCount": 9.0,
+  "gcTotalSeconds": 0.164,
+  "processRssBytes": 323973120,
+  "osThreads": 52,
+  "docker": [
+    {
+      "BlockIO": "0B / 307kB",
+      "CPUPerc": "0.17%",
+      "Container": "team-tasks-benchmark-api-1",
+      "ID": "e47f8b8f8291",
+      "MemPerc": "28.41%",
+      "MemUsage": "291MiB / 1GiB",
+      "Name": "team-tasks-benchmark-api-1",
+      "NetIO": "17.2MB / 18.2MB",
+      "PIDs": "51"
+    },
+    {
+      "BlockIO": "37.3MB / 762MB",
+      "CPUPerc": "1.24%",
+      "Container": "team-tasks-benchmark-db-1",
+      "ID": "3da3d65655bf",
+      "MemPerc": "9.23%",
+      "MemUsage": "94.54MiB / 1GiB",
+      "Name": "team-tasks-benchmark-db-1",
+      "NetIO": "94.1MB / 155MB",
+      "PIDs": "26"
+    }
+  ],
+  "generator": null
+}

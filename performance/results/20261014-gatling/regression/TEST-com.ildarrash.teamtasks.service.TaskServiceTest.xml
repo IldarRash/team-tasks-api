@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ildarrash.teamtasks.service.TaskServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-14T18:48:58.542Z" hostname="DESKTOP-G2N4B10" time="0.012">
+  <properties/>
+  <testcase name="moving a task downward and a no-op preserve dense priorities()" classname="com.ildarrash.teamtasks.service.TaskServiceTest" time="0.006"/>
+  <testcase name="moving a task upward shifts only its preceding range()" classname="com.ildarrash.teamtasks.service.TaskServiceTest" time="0.001"/>
+  <testcase name="unknownCommitOutcomeIsNotRetried()" classname="com.ildarrash.teamtasks.service.TaskServiceTest" time="0.001"/>
+  <testcase name="deadlock and serialization rollback retry at most three attempts then map to transient error()" classname="com.ildarrash.teamtasks.service.TaskServiceTest" time="0.001"/>
+  <testcase name="deleting a middle task compacts remaining priorities under the team lock()" classname="com.ildarrash.teamtasks.service.TaskServiceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

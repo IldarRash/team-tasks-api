@@ -1,0 +1,13 @@
+{
+  "teams": 10,
+  "users": 20,
+  "seedTasksPerTeam": 10,
+  "warmupSeconds": 30,
+  "measurementSeconds": 60,
+  "teamBaseId": 7000000000000,
+  "model": "closed constant concurrent users; one complete lifecycle per user",
+  "gatling": "3.13.5",
+  "jvmHeap": "Xms256m Xmx512m",
+  "apiCpus": 2,
+  "apiMemoryLimitMiB": 1024
+}

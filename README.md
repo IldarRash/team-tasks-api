@@ -77,7 +77,7 @@ Do not run bootRun while Docker API occupies 8080; stop it first with `docker co
 
 Tests cover input boundaries, priority shifts, compaction, bounded rollback retries, unknown commit failures, two independent service instances and concurrent readers. Report: `build/reports/tests/test/index.html`.
 
-## HTTP, restart and load checks
+## HTTP and restart checks
 
 Requires running Docker API and Python 3.10+ (standard library only). From this directory:
 
@@ -85,14 +85,24 @@ Requires running Docker API and Python 3.10+ (standard library only). From this 
 python scripts/verify_api.py
 python scripts/restart_test.py
 python scripts/restart_test.py --recreate --output output/persistence.json
-python scripts/load_test.py --users 20 --warmup 30 --seconds 60
 ```
 
 Use python3 if that is your executable name. Scripts default to 127.0.0.1 to avoid IPv6 localhost connection fallback delays on Windows; override with --base if needed. They create random teams and clean their tasks. Empty team lock rows remain by design. Output JSON files are under output/.
 
-HTTP checks cover CRUD, move directions/no-op, deletion positions, validation, 40 concurrent creations and 120 mixed writes/reads. Restart checks every saved field after restarting only this Compose project's API. Load runs one hot team and ten teams; each workflow performs POST, move to 1, list, DELETE. Default: 20 users, 30 seconds warmup and 60 seconds measurement per scenario. Latency is for the whole four-request workflow, not one request. Pass criterion: zero unexpected errors and continuous final priorities. Performance is measured, with no invented SLA.
+HTTP checks cover CRUD, move directions/no-op, deletion positions, validation, 40 concurrent creations and 120 mixed writes/reads. Restart checks every saved field after restarting only this Compose project's API.
 
 To check volume persistence, save a task UUID, run `docker compose -p team-tasks-api down`, start again without `-v`, wait for health UP and GET that UUID. All fields must match.
+
+## Gatling performance and footprints
+
+[Performance suite](performance/README.md): 1/10/100/1000 teams with 20 concurrent users, plus 1000 teams with 100 users; 10 seeded tasks/team, separate 30-second warmup and 60-second measurement. Native Gatling HTML reports, JFR, thread/heap/native-memory snapshots and sampled process/container metrics are retained alongside charts. Python generates no benchmark load. [Measured comparison](performance/results/20261014-gatling/index.html).
+
+```sh
+./gradlew bootJar gatlingClasses
+python performance/run_suite.py
+```
+
+On Windows use gradlew.bat. The suite targets a separate benchmark API at port8081 and does not modify the regular DB. See performance/README.md for charts, profiling tools, definitions and measurement limits.
 
 ## Design
 

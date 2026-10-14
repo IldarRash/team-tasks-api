@@ -1,0 +1,6 @@
+{
+  "dense": true,
+  "teams": 1000,
+  "tasks": 10000,
+  "seedTasksPreserved": true
+}

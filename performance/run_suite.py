@@ -31,9 +31,10 @@ def generator_process():
         return None
     pid = pids[0]
     if os.name == "nt":
-        code = f"$p=Get-Process -Id {pid}; @{{pid=$p.Id;rssBytes=$p.WorkingSet64;osThreads=$p.Threads.Count;cpuSeconds=$p.CPU}} | ConvertTo-Json -Compress"
+        code = f"$ErrorActionPreference='Stop'; $p=Get-Process -Id {pid}; @{{pid=$p.Id;rssBytes=$p.WorkingSet64;osThreads=$p.Threads.Count;cpuSeconds=$p.CPU}} | ConvertTo-Json -Compress"
         response = command(["powershell.exe", "-NoProfile", "-Command", code], check=False)
-        return json.loads(response.stdout) if response.returncode == 0 else None
+        data = json.loads(response.stdout) if response.returncode == 0 else None
+        return data if data and isinstance(data.get("rssBytes"), (int, float)) and isinstance(data.get("osThreads"), (int, float)) else None
     status = Path(f"/proc/{pid}/status")
     if status.is_file():
         text = status.read_text()
