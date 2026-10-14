@@ -1,0 +1,28 @@
+{
+  "verifiedAt": "2026-10-14T20:11:22.5927073Z",
+  "command": "RUN_POSTGRES_INTEGRATION=true TEST_DATABASE_URL=jdbc:postgresql://localhost:55433/taskdb gradlew test --rerun-tasks",
+  "suites": [
+    {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 3,
+      "name": "com.ildarrash.teamtasks.api.TaskHttpPostgresIntegrationTest"
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 4,
+      "name": "com.ildarrash.teamtasks.api.TaskJsonParserTest"
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 5,
+      "name": "com.ildarrash.teamtasks.service.TaskServiceTest"
+    }
+  ],
+  "database": "isolated PostgreSQL on localhost:55433"
+}

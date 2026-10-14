@@ -1,0 +1,52 @@
+{
+  "epochMs": 1792008587372,
+  "rssBytes": 201801728,
+  "osThreads": 20,
+  "containers": [
+    {
+      "BlockIO": "113MB / 0B",
+      "CPUPerc": "0.03%",
+      "Container": "team-tasks-compare-native-1",
+      "ID": "3439fc978ea6",
+      "MemPerc": "11.43%",
+      "MemUsage": "117.1MiB / 1GiB",
+      "Name": "team-tasks-compare-native-1",
+      "NetIO": "901kB / 893kB",
+      "PIDs": "20"
+    },
+    {
+      "BlockIO": "15.3MB / 32.8MB",
+      "CPUPerc": "1.15%",
+      "Container": "team-tasks-compare-db-1",
+      "ID": "0adb0474f2a6",
+      "MemPerc": "6.19%",
+      "MemUsage": "63.43MiB / 1GiB",
+      "Name": "team-tasks-compare-db-1",
+      "NetIO": "2.94MB / 4.46MB",
+      "PIDs": "26"
+    }
+  ],
+  "osThreadIds": [
+    1,
+    10,
+    11,
+    12,
+    13,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    7,
+    8,
+    9
+  ],
+  "generator": null
+}

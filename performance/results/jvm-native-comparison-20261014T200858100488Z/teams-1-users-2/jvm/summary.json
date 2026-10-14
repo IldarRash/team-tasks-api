@@ -1,0 +1,33 @@
+{
+  "rps": 297.2,
+  "tps": 74.3,
+  "httpP95Ms": 10,
+  "transactionP95Ms": 39,
+  "rssMiB": 286.14453125,
+  "osThreads": 33,
+  "cpuPercent": 144.25,
+  "observedNewOsThreads": 0,
+  "observedNewOsThreadsDefinition": "Distinct OS thread IDs first observed in 5s samples since post-warmup baseline; lower bound, excludes threads born and ended between samples",
+  "generatorValidSamples": 2,
+  "generatorRssMiB": 256.015625,
+  "generatorOsThreads": 67,
+  "startupSeconds": 6.862239600000066,
+  "startupDefinition": "Docker compose up through first healthy HTTP response; includes container orchestration and 1s polling",
+  "errors": 0,
+  "applicationStartupSeconds": 7.392,
+  "reportPath": "teams-1-users-2/jvm/measurement/index.html",
+  "requestCount": 2972,
+  "sampleCount": 2,
+  "runtime": "jvm",
+  "teams": 1,
+  "users": 2,
+  "warmupSeconds": 2,
+  "measurementSeconds": 10,
+  "invariant": {
+    "dense": true,
+    "teams": 1,
+    "tasks": 10,
+    "seedTasksPreserved": true
+  },
+  "jvmOnlyDiagnostics": "not collected in either timed run for comparability"
+}

@@ -1,0 +1,78 @@
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :compileGatlingKotlin NO-SOURCE
+> Task :compileGatlingJava UP-TO-DATE
+> Task :processGatlingResources UP-TO-DATE
+> Task :gatlingClasses UP-TO-DATE
+
+> Task :gatlingRun
+Simulation com.ildarrash.teamtasks.performance.TaskLifecycleSimulation started...
+
+========================================================================================================================
+2026-10-14 20:09:29 GMT                                                                               5s elapsed
+---- Requests -----------------------------------------------------------------------|---Total---|-----OK----|----KO----
+> Global                                                                             |     1,064 |     1,064 |         0
+
+
+---- Task lifecycle ----------------------------------------------------------------------------------------------------
+          active:         2  / done:       266
+========================================================================================================================
+
+
+========================================================================================================================
+2026-10-14 20:09:34 GMT                                                                              10s elapsed
+---- Requests -----------------------------------------------------------------------|---Total---|-----OK----|----KO----
+> Global                                                                             |     2,948 |     2,948 |         0
+
+
+---- Task lifecycle ----------------------------------------------------------------------------------------------------
+          active:         2  / done:       737
+========================================================================================================================
+
+
+========================================================================================================================
+2026-10-14 20:09:34 GMT                                                                              10s elapsed
+---- Requests -----------------------------------------------------------------------|---Total---|-----OK----|----KO----
+> Global                                                                             |     2,972 |     2,972 |         0
+
+
+---- Task lifecycle ----------------------------------------------------------------------------------------------------
+          active:         0  / done:       743
+========================================================================================================================
+
+Parsing log file(s)...
+Parsing log file(s) done in 0s.
+Generating reports...
+
+========================================================================================================================
+---- Global Information -------------------------------------------------------------|---Total---|-----OK----|----KO----
+> request count                                                                      |     2,972 |     2,972 |         0
+> min response time (ms)                                                             |         1 |         1 |         -
+> max response time (ms)                                                             |       254 |       254 |         -
+> mean response time (ms)                                                            |         6 |         6 |         -
+> response time std deviation (ms)                                                   |         8 |         8 |         -
+> response time 50th percentile (ms)                                                 |         6 |         6 |         -
+> response time 75th percentile (ms)                                                 |         7 |         7 |         -
+> response time 95th percentile (ms)                                                 |        10 |        10 |         -
+> response time 99th percentile (ms)                                                 |        22 |        22 |         -
+> mean throughput (rps)                                                              |     297.2 |     297.2 |         -
+---- Response Time Distribution ----------------------------------------------------------------------------------------
+> OK: t < 800 ms                                                                                          2,972   (100%)
+> OK: 800 ms <= t < 1200 ms                                                                                   0     (0%)
+> OK: t >= 1200 ms                                                                                            0     (0%)
+> KO                                                                                                          0     (0%)
+========================================================================================================================
+
+Reports generated, please open the following file: file:///C:/Users/ilsac/IdeaProjects/jobsearch/team-tasks-api/build/reports/gatling/tasklifecyclesimulation-20261014200924675/index.html
+Global: count of failed events is 0.0 : true (actual : 0.0)
+Task lifecycle: count of failed events is 0.0 : true (actual : 0.0)
+
+[Incubating] Problems report is available at: file:///C:/Users/ilsac/IdeaProjects/jobsearch/team-tasks-api/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 14s
+3 actionable tasks: 1 executed, 2 up-to-date

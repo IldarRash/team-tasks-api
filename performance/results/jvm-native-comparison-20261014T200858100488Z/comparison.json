@@ -1,0 +1,104 @@
+{
+  "profiles": [
+    {
+      "teams": 1,
+      "users": 2,
+      "jvm": {
+        "rps": 297.2,
+        "tps": 74.3,
+        "httpP95Ms": 10,
+        "transactionP95Ms": 39,
+        "rssMiB": 286.14453125,
+        "osThreads": 33,
+        "cpuPercent": 144.25,
+        "observedNewOsThreads": 0,
+        "observedNewOsThreadsDefinition": "Distinct OS thread IDs first observed in 5s samples since post-warmup baseline; lower bound, excludes threads born and ended between samples",
+        "generatorValidSamples": 2,
+        "generatorRssMiB": 256.015625,
+        "generatorOsThreads": 67,
+        "startupSeconds": 6.862239600000066,
+        "startupDefinition": "Docker compose up through first healthy HTTP response; includes container orchestration and 1s polling",
+        "errors": 0,
+        "applicationStartupSeconds": 7.392,
+        "reportPath": "teams-1-users-2/jvm/measurement/index.html",
+        "requestCount": 2972,
+        "sampleCount": 2,
+        "runtime": "jvm",
+        "teams": 1,
+        "users": 2,
+        "warmupSeconds": 2,
+        "measurementSeconds": 10,
+        "invariant": {
+          "dense": true,
+          "teams": 1,
+          "tasks": 10,
+          "seedTasksPreserved": true
+        },
+        "jvmOnlyDiagnostics": "not collected in either timed run for comparability"
+      },
+      "native": {
+        "rps": 213.45,
+        "tps": 53.36,
+        "httpP95Ms": 16,
+        "transactionP95Ms": 51,
+        "rssMiB": 196.796875,
+        "osThreads": 20,
+        "cpuPercent": 63.03,
+        "observedNewOsThreads": 0,
+        "observedNewOsThreadsDefinition": "Distinct OS thread IDs first observed in 5s samples since post-warmup baseline; lower bound, excludes threads born and ended between samples",
+        "generatorValidSamples": 2,
+        "generatorRssMiB": 264.66015625,
+        "generatorOsThreads": 68,
+        "startupSeconds": 2.2679385000001275,
+        "startupDefinition": "Docker compose up through first healthy HTTP response; includes container orchestration and 1s polling",
+        "errors": 0,
+        "applicationStartupSeconds": 0.473,
+        "reportPath": "teams-1-users-2/native/measurement/index.html",
+        "requestCount": 2348,
+        "sampleCount": 2,
+        "runtime": "native",
+        "teams": 1,
+        "users": 2,
+        "warmupSeconds": 2,
+        "measurementSeconds": 10,
+        "invariant": {
+          "dense": true,
+          "teams": 1,
+          "tasks": 10,
+          "seedTasksPreserved": true
+        },
+        "jvmOnlyDiagnostics": "not collected in either timed run for comparability"
+      }
+    }
+  ],
+  "runConfig": {
+    "profiles": [
+      {
+        "teams": 1,
+        "users": 2
+      }
+    ],
+    "runtimes": [
+      "jvm",
+      "native"
+    ],
+    "warmupSeconds": 2,
+    "measurementSeconds": 10
+  },
+  "methodology": {
+    "warmupSeconds": 2,
+    "measurementSeconds": 10,
+    "seedTasksPerTeam": 10,
+    "cpuLimit": 2,
+    "memoryLimitMiB": 1024,
+    "heapMaxMiB": 512
+  },
+  "generatedAt": "2026-10-14T20:09:01.679261+00:00",
+  "environment": {
+    "NCPU": 16,
+    "MemTotal": 16741457920,
+    "OSType": "linux",
+    "OperatingSystem": "Docker Desktop (containerized)",
+    "ServerVersion": "24.0.7"
+  }
+}
