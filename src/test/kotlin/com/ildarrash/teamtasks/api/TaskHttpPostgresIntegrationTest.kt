@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.transaction.PlatformTransactionManager
 import java.util.Collections
+import java.util.UUID
 import java.util.concurrent.Callable
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
@@ -70,6 +71,16 @@ class TaskHttpPostgresIntegrationTest {
         ).andExpect(status().isBadRequest).andReturn().response.contentAsString.let { objectMapper.readValue(it, ApiError::class.java) }
         assertEquals("VALIDATION_ERROR", error.code)
         assertEquals("is not allowed", error.fieldErrors["priority"])
+    }
+
+    @Test
+    fun missingTaskReturnsTheDocumentedErrorWithAnEmptyFieldErrorsObject() {
+        val error = mockMvc.perform(get("/tasks/${UUID.randomUUID()}"))
+            .andExpect(status().isNotFound).andReturn().response.contentAsString
+            .let { objectMapper.readValue(it, ApiError::class.java) }
+
+        assertEquals("TASK_NOT_FOUND", error.code)
+        assertEquals(emptyMap(), error.fieldErrors)
     }
 
     @Test

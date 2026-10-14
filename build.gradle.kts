@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm") version "2.1.20"
     kotlin("plugin.spring") version "2.1.20"
     id("org.springframework.boot") version "3.5.7"
+    id("org.graalvm.buildtools.native") version "0.10.6"
     id("io.spring.dependency-management") version "1.1.7"
     id("io.gatling.gradle") version "3.13.5.3"
 }
@@ -33,6 +34,16 @@ dependencies {
 tasks.withType<Test> { useJUnitPlatform() }
 tasks.bootJar { archiveFileName.set("team-tasks-api.jar") }
 tasks.jar { enabled = false }
+
+graalvmNative {
+    binaries {
+        named("main") {
+            imageName.set("team-tasks-api")
+            classpath.from(sourceSets.main.get().output)
+            buildArgs.addAll("-J-Xmx8g", "-H:NumberOfThreads=4")
+        }
+    }
+}
 
 gatling {
     gatlingVersion = "3.13.5"

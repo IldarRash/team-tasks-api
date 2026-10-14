@@ -14,6 +14,7 @@ import org.springframework.web.HttpMediaTypeNotSupportedException
 import org.springframework.web.HttpRequestMethodNotSupportedException
 import org.springframework.web.servlet.resource.NoResourceFoundException
 import org.slf4j.LoggerFactory
+import java.util.HashMap
 
 @RestControllerAdvice
 class ApiExceptionHandler {
@@ -63,7 +64,7 @@ class ApiExceptionHandler {
     }
 
     private fun error(status: HttpStatus, code: String, message: String, fieldErrors: Map<String, String> = emptyMap()): ResponseEntity<ApiError> =
-        ResponseEntity.status(status).body(ApiError(status.value(), code, message, fieldErrors))
+        ResponseEntity.status(status).body(ApiError(status.value(), code, message, HashMap(fieldErrors)))
 }
 
 data class ApiError(
