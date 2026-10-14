@@ -40,6 +40,10 @@ class TaskController(private val service: TaskService) {
     fun patch(@PathVariable id: UUID, @RequestBody body: JsonNode): TaskResponse =
         service.patch(id, TaskJsonParser.patch(body)).toResponse()
 
+    @PatchMapping("/{id}/priority")
+    fun changePriority(@PathVariable id: UUID, @RequestBody body: JsonNode): TaskResponse =
+        service.changePriority(id, TaskJsonParser.priority(body)).toResponse()
+
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: UUID): ResponseEntity<Void> {
         service.delete(id)

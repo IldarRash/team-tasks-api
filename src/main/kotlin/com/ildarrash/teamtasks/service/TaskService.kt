@@ -56,6 +56,20 @@ class TaskService(
         }
     }
 
+    fun changePriority(id: UUID, targetPriority: Int): Task {
+        if (targetPriority <= 0) invalid("priority", "must be a positive integer")
+        return writeForTask(id) { current ->
+            val count = repository.findAll(current.teamId).size
+            if (targetPriority !in 1..count) invalid("priority", "must be between 1 and $count")
+            when {
+                targetPriority < current.priority -> repository.shiftPrioritiesUp(current.teamId, targetPriority, current.priority)
+                targetPriority > current.priority -> repository.shiftPrioritiesDown(current.teamId, current.priority, targetPriority)
+            }
+            if (targetPriority != current.priority) repository.setPriority(id, targetPriority)
+            current.copy(priority = targetPriority)
+        }
+    }
+
     private fun <T> writeForTask(id: UUID, action: (Task) -> T): T = write {
         // The team is read first only to locate its durable cross-instance lock. It is read again after locking.
         val initial = repository.findById(id) ?: throw TaskNotFoundException(id)
