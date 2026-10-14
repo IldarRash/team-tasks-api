@@ -40,6 +40,7 @@ public final class TaskLifecycleSimulation extends Simulation {
 
   private final HttpProtocolBuilder httpProtocol = http
       .baseUrl(BASE_URL)
+      .shareConnections()
       .acceptHeader("application/json")
       .contentTypeHeader("application/json")
       .disableFollowRedirect();

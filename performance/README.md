@@ -1,8 +1,29 @@
 # Gatling performance suite
 
-Gatling generates HTTP load. Python scripts only orchestrate containers, capture diagnostics and turn actual evidence into comparison charts. The old Python load generator was removed; its previous numbers are retained in historical/python-load.json and are not comparable to this suite's constrained/instrumented environment.
+Gatling generates HTTP load. Python scripts only orchestrate containers, capture diagnostics and render actual evidence.
+
+## JVM and GraalVM Native Image
+
+The main comparison uses [matched runtime containers](compare-compose.yaml), localhost port 8082, the approved matrix below and the same source revision for both builds. Both API processes receive 2 CPUs, a 1 GiB container ceiling and a 512 MiB heap ceiling. PostgreSQL uses a separate comparison volume. JFR/NMT are disabled during both timed variants so JVM-specific instrumentation does not bias the pair.
+
+```sh
+./gradlew bootJar gatlingClasses
+docker build -f native/Dockerfile -t team-tasks-api-native .
+python performance/compare_runtimes.py
+python performance/render_comparison.py performance/results/jvm-native-comparison
+```
+
+PowerShell uses `gradlew.bat`; set JAVA_HOME to JDK 17. Open the generated offline [dashboard](results/jvm-native-comparison/index.html) or [report](results/jvm-native-comparison/report.md). Raw Gatling HTML/logs, OS thread IDs, process RSS, Docker API/DB CPU and memory, generator footprint, startup logs and container configuration are retained per runtime/profile. Five-second samples give observed maxima and a lower bound on distinct new threads, not exact lifetime peaks or total thread creations. Docker-to-health startup includes orchestration; application-reported startup is also retained separately.
+
+A short capability check uses `--smoke --warmup 2 --duration 10 --output performance/work/my-smoke`. This is not part of the 30s/60s comparison. Completed profiles can be resumed only with identical durations; use a fresh output directory for a changed setup. Stop the comparison with `docker compose -p team-tasks-compare -f performance/compare-compose.yaml down`.
+
+## Separate JVM diagnostics
+
+The instructions below describe the additional JVM-only JFR, heap and thread capture. Their instrumented runs provide diagnostic evidence and are not the JVM baseline for the Native Image comparison.
 
 ## Approved matrix
+
+Gatling uses a shared keep-alive HTTP connection pool across virtual users. This avoids creating a new TCP pool for every replaced user and exhausting Windows ephemeral ports during consecutive runs. Both runtimes use this same connection policy; results from the earlier per-user pool attempt are excluded from the main comparison.
 
 | Teams | Seed tasks/team | Active virtual users | Warmup | Measurement |
 |---:|---:|---:|---:|---:|
@@ -75,6 +96,6 @@ Heap used, heap committed, configured Xmx, JVM native committed/reserved, proces
 
 Docker CPU percentage is relative to one core; 200% means about two cores, the configured container allocation. PostgreSQL memory and Gatling generator RSS/OS threads are also sampled. Generator observations missing because its process exited during a boundary sample are excluded from its maxima; generatorValidSamples records coverage. All raw samples are retained. Actuator requests, docker stats, jcmd, JFR/NMT and host-process observation add overhead; it is present for every profile. Warmup is30 seconds, measurements are60 seconds, and database caches/bloat/order can still influence a single pass. These profiles compare team cardinality and20 vs100-user contention; they do not prove performance for large lists, millions of stored tasks, long soak duration or separate production machines.
 
-Retained run: [2026-10-14 comparison](results/20261014-gatling/index.html), [machine-readable summary](results/20261014-gatling/summary.json).
+Retained JVM diagnostics: [2026-10-14 diagnostic run](results/20261014-gatling/index.html), [machine-readable diagnostic summary](results/20261014-gatling/summary.json). This JFR/NMT-instrumented evidence is separate from the [matched JVM/native comparison](results/jvm-native-comparison/report.md).
 
 References: [Gatling Gradle](https://docs.gatling.io/integrations/build-tools/gradle-plugin/), [workload injection](https://docs.gatling.io/concepts/injection/), [binary log source](https://github.com/gatling/gatling/blob/v3.13.5/gatling-core/src/main/scala/io/gatling/core/stats/writer/LogFileDataWriter.scala), [JDK17 diagnostics](https://docs.oracle.com/en/java/javase/17/docs/specs/man/jcmd.html).
