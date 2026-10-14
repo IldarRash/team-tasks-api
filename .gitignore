@@ -5,3 +5,5 @@ build/
 .env
 output/
 __pycache__/
+performance/work/
+*.hprof

@@ -5,6 +5,7 @@ plugins {
     kotlin("plugin.spring") version "2.1.20"
     id("org.springframework.boot") version "3.5.7"
     id("io.spring.dependency-management") version "1.1.7"
+    id("io.gatling.gradle") version "3.13.5.3"
 }
 
 group = "com.example"
@@ -32,3 +33,16 @@ dependencies {
 tasks.withType<Test> { useJUnitPlatform() }
 tasks.bootJar { archiveFileName.set("team-tasks-api.jar") }
 tasks.jar { enabled = false }
+
+gatling {
+    gatlingVersion = "3.13.5"
+    includeMainOutput = false
+    includeTestOutput = false
+    jvmArgs = listOf("-Xms256m", "-Xmx512m", "-Dfile.encoding=UTF-8", "-Dio.netty.eventLoopThreads=8",
+        "--add-opens=java.base/java.lang=ALL-UNNAMED", "--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED")
+    systemProperties = listOf("baseUrl", "teams", "users", "durationSeconds", "teamBaseId")
+        .associateWith { System.getProperty(it, mapOf(
+            "baseUrl" to "http://127.0.0.1:8081", "teams" to "1", "users" to "20",
+            "durationSeconds" to "60", "teamBaseId" to "7000000000000"
+        ).getValue(it)) }
+}

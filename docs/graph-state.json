@@ -1,9 +1,9 @@
 {
   "workflowId": "UF3-TEAM-TASKS-20261014",
-  "revision": 2,
+  "revision": 3,
   "mode": "Graph",
-  "state": "completed",
-  "approvedScope": "local implementation, commits, validation and archive; remote actions excluded",
+  "state": "running",
+  "approvedScope": "local Gatling matrix and profiling evidence, repository cleanup and archive refresh",
   "implementationAuthorized": true,
   "planningComplete": true,
   "githubHandoffComplete": false,
@@ -35,12 +35,20 @@
     "API restart and container recreation without volume deletion preserve every task field",
     "Root source review and OpenAPI YAML/local references check completed",
     "Archive unpacked into fresh build directory: bootJar and 9 unit tests passed; 2 DB tests explicitly skipped",
-    "Archive sources retain executable wrapper mode and exclude Git metadata, build caches and DB volumes"
+    "Archive sources retain executable wrapper mode and exclude Git metadata, build caches and DB volumes",
+    "Author approved Gatling matrix1/10/100/1000 teams20users plus1000teams100users,10seed tasks perteam,30s warmup60s measurement"
   ],
   "unverified": [
     "macOS runtime",
     "Clean machine without dependency caches",
     "Production/distributed deployment"
   ],
-  "localImplementationComplete": true
+  "localImplementationComplete": true,
+  "performanceNodes": {
+    "P1": "running",
+    "P2": "running",
+    "P3": "pending",
+    "P4": "pending",
+    "P5": "pending"
+  }
 }

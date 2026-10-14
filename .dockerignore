@@ -1,6 +1,11 @@
 .git
 .gradle
-build
+build/*
+!build/libs/
+build/libs/*
+!build/libs/team-tasks-api.jar
 output
 .idea
 .env
+performance/results/
+performance/work/
