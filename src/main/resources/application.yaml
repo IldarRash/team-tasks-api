@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: team-tasks-api
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:55432/taskdb}
+    username: ${DATABASE_USER:tasks}
+    password: ${DATABASE_PASSWORD:tasks}
+    hikari:
+      maximum-pool-size: 20
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+      fail-on-null-for-primitives: true
+      fail-on-numbers-for-enums: true
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
