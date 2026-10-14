@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "operation": "docker compose down/up without -v",
+  "allTaskFieldsPreserved": true
+}

@@ -11,13 +11,21 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--base", default="http://127.0.0.1:8080")
     parser.add_argument("--output", default="output/restart.json")
+    parser.add_argument("--recreate", action="store_true", help="Recreate this project's containers without deleting volumes")
     args = parser.parse_args()
     root = Path(__file__).resolve().parent.parent
     team = new_team()
     try:
         before = request(args.base, "POST", "/tasks", {"teamId": team, "name": "persistent",
                          "description": "must survive API restart"}, (201,))
-        subprocess.run(["docker", "compose", "-p", "team-tasks-api", "restart", "api"], cwd=root, check=True)
+        compose = ["docker", "compose", "-p", "team-tasks-api"]
+        if args.recreate:
+            subprocess.run(compose + ["down"], cwd=root, check=True)
+            subprocess.run(compose + ["up", "-d"], cwd=root, check=True)
+            operation = "docker compose down/up without -v"
+        else:
+            subprocess.run(compose + ["restart", "api"], cwd=root, check=True)
+            operation = "docker compose -p team-tasks-api restart api"
         deadline = time.monotonic() + 120
         while True:
             try:
@@ -29,7 +37,7 @@ if __name__ == "__main__":
                 time.sleep(1)
         after = request(args.base, "GET", f'/tasks/{before["id"]}')
         assert before == after, (before, after)
-        result = {"passed": True, "operation": "docker compose -p team-tasks-api restart api",
+        result = {"passed": True, "operation": operation,
                   "allTaskFieldsPreserved": True}
         out = Path(args.output)
         out.parent.mkdir(parents=True, exist_ok=True)

@@ -84,6 +84,7 @@ Requires running Docker API and Python 3.10+ (standard library only). From this 
 ```sh
 python scripts/verify_api.py
 python scripts/restart_test.py
+python scripts/restart_test.py --recreate --output output/persistence.json
 python scripts/load_test.py --users 20 --warmup 30 --seconds 60
 ```
 
