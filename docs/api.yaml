@@ -1,0 +1,147 @@
+openapi: 3.0.3
+info:
+  title: Team Tasks API
+  version: 1.0.0
+  description: Task priorities are continuous and unique within each team. No authentication; local exercise only.
+servers:
+  - url: http://localhost:8080
+paths:
+  /tasks:
+    get:
+      summary: List tasks ordered by teamId and priority
+      parameters:
+        - in: query
+          name: teamId
+          schema: {type: integer, format: int64, minimum: 1}
+      responses:
+        '200':
+          description: Task list (empty array for an empty team)
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/Task'}}
+        '400': {$ref: '#/components/responses/BadRequest'}
+    post:
+      summary: Append task with automatically assigned priority
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/CreateTask'}
+      responses:
+        '201':
+          description: Created task
+          headers:
+            Location: {schema: {type: string}, description: URL of created task}
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Task'}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /tasks/{id}:
+    parameters:
+      - {$ref: '#/components/parameters/TaskId'}
+    get:
+      summary: Get a task
+      responses:
+        '200': {$ref: '#/components/responses/TaskResponse'}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '404': {$ref: '#/components/responses/NotFound'}
+    patch:
+      summary: Update name and/or description; at least one field required
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              minProperties: 1
+              properties:
+                name: {type: string, minLength: 1, maxLength: 200, pattern: '\S'}
+                description: {type: string, minLength: 1, maxLength: 10000, pattern: '\S'}
+      responses:
+        '200': {$ref: '#/components/responses/TaskResponse'}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+    delete:
+      summary: Delete task and close its priority gap
+      responses:
+        '204': {description: Deleted}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /tasks/{id}/priority:
+    parameters:
+      - {$ref: '#/components/parameters/TaskId'}
+    patch:
+      summary: Move task to priority 1..N, shifting intervening tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [priority]
+              properties:
+                priority: {type: integer, minimum: 1, description: Must not exceed current task count in the team}
+      responses:
+        '200': {$ref: '#/components/responses/TaskResponse'}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+components:
+  parameters:
+    TaskId:
+      in: path
+      name: id
+      required: true
+      schema: {type: string, format: uuid}
+  schemas:
+    CreateTask:
+      type: object
+      additionalProperties: false
+      required: [teamId, name, description]
+      properties:
+        teamId: {type: integer, format: int64, minimum: 1}
+        name: {type: string, minLength: 1, maxLength: 200, pattern: '\S'}
+        description: {type: string, minLength: 1, maxLength: 10000, pattern: '\S'}
+    Task:
+      type: object
+      required: [id, teamId, name, description, priority]
+      properties:
+        id: {type: string, format: uuid}
+        teamId: {type: integer, format: int64, minimum: 1}
+        name: {type: string}
+        description: {type: string}
+        priority: {type: integer, minimum: 1}
+    Error:
+      type: object
+      required: [status, code, message, fieldErrors]
+      properties:
+        status: {type: integer}
+        code: {type: string}
+        message: {type: string}
+        fieldErrors: {type: object, additionalProperties: {type: string}}
+  responses:
+    TaskResponse:
+      description: Task
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Task'}
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    NotFound:
+      description: Task does not exist
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Unavailable:
+      description: Temporary database conflict; retries exhausted
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}

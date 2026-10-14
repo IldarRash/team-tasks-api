@@ -1,0 +1,43 @@
+{
+  "workflowId": "UF3-TEAM-TASKS-20261014",
+  "revision": 2,
+  "mode": "Graph",
+  "state": "running",
+  "approvedScope": "local implementation and validation; no remote repository actions",
+  "implementationAuthorized": true,
+  "planningComplete": true,
+  "githubHandoffComplete": false,
+  "nodes": {
+    "G00": "succeeded",
+    "G01": "running",
+    "G02": "pending",
+    "G03": "pending",
+    "G04": "pending",
+    "G05": "pending",
+    "G06": "pending",
+    "G07": "pending",
+    "G08": "pending",
+    "G09": "pending",
+    "G10": "pending",
+    "GH": "skipped",
+    "GP": "skipped"
+  },
+  "evidence": [
+    "Both PDF pages extracted and reviewed",
+    "All mandatory and bonus requirements mapped to nodes, commits and checks",
+    "Author selected private team-tasks-api and planning only",
+    "GitHub connector profile confirms IldarRash",
+    "gh auth status reports invalid keyring token; connector has no create repository tool",
+    "2026-10-14: author authorized local continuation after enabling Docker; remote creation deferred to author. Docker daemon verified and PostgreSQL started."
+  ],
+  "unverified": [
+    "Dependency versions",
+    "Build and tests",
+    "Docker runtime",
+    "Concurrency",
+    "Restart",
+    "Load",
+    "Archive",
+    "GitHub creation"
+  ]
+}
