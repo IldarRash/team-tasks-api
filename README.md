@@ -95,14 +95,16 @@ To check volume persistence, save a task UUID, run `docker compose -p team-tasks
 
 ## Gatling performance and footprints
 
-[Performance suite](performance/README.md): 1/10/100/1000 teams with 20 concurrent users, plus 1000 teams with 100 users; 10 seeded tasks/team, separate 30-second warmup and 60-second measurement. Native Gatling HTML reports, JFR, thread/heap/native-memory snapshots and sampled process/container metrics are retained alongside charts. Python generates no benchmark load. [Measured comparison](performance/results/20261014-gatling/index.html).
+[Performance suite](performance/README.md): 1/10/100/1000 teams with 20 concurrent users, plus 1000 teams with 100 users; 10 seeded tasks/team, separate 30-second warmup and 60-second measurement. Gatling generates the load; Python orchestrates runs and collects evidence. [JVM / GraalVM dashboard](performance/results/jvm-native-comparison/index.html), [measured report](performance/results/jvm-native-comparison/report.md), [Native Image build](native/README.md).
 
 ```sh
 ./gradlew bootJar gatlingClasses
-python performance/run_suite.py
+docker build -f native/Dockerfile -t team-tasks-api-native .
+python performance/compare_runtimes.py
+python performance/render_comparison.py performance/results/jvm-native-comparison
 ```
 
-On Windows use gradlew.bat. The suite targets a separate benchmark API at port8081 and does not modify the regular DB. See performance/README.md for charts, profiling tools, definitions and measurement limits.
+On Windows use gradlew.bat. The comparison targets a separate API at port 8082 and does not modify the regular DB. Both variants have equal resource limits and common OS metrics. JVM-only JFR/NMT evidence is collected separately from the matched timed comparison. See performance/README.md for profiling tools, definitions and measurement limits.
 
 ## Design
 
@@ -117,9 +119,5 @@ python scripts/package.py
 ```
 
 Creates output/team-tasks-api.zip from tracked Git files. Commit changes before packaging. Excludes .git, secrets, build caches and database data. Local Git history is available; add your remote yourself. Nothing is pushed automatically.
-
-- [Requirements and execution graph](docs/graph-spec.md)
-- [Verification evidence](docs/verification.md)
-- [Graph state](docs/graph-state.json)
 
 References: [Spring Boot requirements](https://docs.spring.io/spring-boot/3.5/system-requirements.html), [Gradle compatibility](https://docs.gradle.org/8.13/userguide/compatibility.html), [Spring transactions](https://docs.spring.io/spring-framework/reference/6.2/data-access/transaction/programmatic.html).

@@ -1,0 +1,16 @@
+{
+  "runtimeImageId": "sha256:f86beca338427a5ccd3c25c0414455d099c9d965d0e6975659845ea92315ae97",
+  "builder": "ghcr.io/graalvm/native-image-community:17",
+  "javaVersion": "17.0.9+9",
+  "graalVersion": "GraalVM CE 17.0.9+9.1",
+  "targetMachine": "x86-64-v3",
+  "optimizationLevel": 2,
+  "gc": "Serial GC",
+  "nativeImageGenerationSecondsReported": 153,
+  "gradleBuildSecondsReported": 250,
+  "compilerPeakRssGbReported": 5.04,
+  "compilerCpuLoadReported": 5.71,
+  "compilerGcCount": 82,
+  "compilerGcSecondsReported": 10.2,
+  "note": "Compiler footprint is build-time evidence and is not runtime API memory. Values transcribed from the successful nativeCompile console output. JVM runtime version is captured separately per profile; Java patch levels can differ."
+}

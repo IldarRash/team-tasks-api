@@ -1,0 +1,65 @@
+{
+  "version": "3.13.5",
+  "simulation": "com.ildarrash.teamtasks.performance.TaskLifecycleSimulation",
+  "startEpochMs": 1792007139953,
+  "endEpochMs": 1792007199974,
+  "observedHttpSeconds": 60.021,
+  "requests": 70320,
+  "successfulRequests": 70320,
+  "failedRequests": 0,
+  "successfulTransactions": 17580,
+  "failedTransactions": 0,
+  "rps": 1171.589943519768,
+  "tps": 292.897485879942,
+  "httpLatencyMs": {
+    "p50": 9,
+    "p95": 64,
+    "p99": 68
+  },
+  "transactionLatencyMs": {
+    "p50": 81,
+    "p95": 93,
+    "p99": 106
+  },
+  "perRequest": {
+    "Create task": {
+      "requests": 17580,
+      "failed": 0,
+      "latencyMs": {
+        "p50": 8,
+        "p95": 64,
+        "p99": 68
+      }
+    },
+    "Delete created task": {
+      "requests": 17580,
+      "failed": 0,
+      "latencyMs": {
+        "p50": 9,
+        "p95": 65,
+        "p99": 68
+      }
+    },
+    "List team tasks": {
+      "requests": 17580,
+      "failed": 0,
+      "latencyMs": {
+        "p50": 3,
+        "p95": 57,
+        "p99": 60
+      }
+    },
+    "Move task to first priority": {
+      "requests": 17580,
+      "failed": 0,
+      "latencyMs": {
+        "p50": 10,
+        "p95": 65,
+        "p99": 70
+      }
+    }
+  },
+  "errors": {},
+  "usersStarted": 17580,
+  "usersEnded": 17580
+}
