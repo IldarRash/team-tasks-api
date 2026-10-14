@@ -10,12 +10,13 @@ The main comparison uses [matched runtime containers](compare-compose.yaml), loc
 ./gradlew bootJar gatlingClasses
 docker build -f native/Dockerfile -t team-tasks-api-native .
 python performance/compare_runtimes.py
-python performance/render_comparison.py performance/results/jvm-native-comparison
+# Render the exact OUTPUT directory printed by the previous command.
+python performance/render_comparison.py performance/results/jvm-native-comparison-YYYYMMDDTHHMMSSffffffZ
 ```
 
-PowerShell uses `gradlew.bat`; set JAVA_HOME to JDK 17. Open the generated offline [dashboard](results/jvm-native-comparison/index.html) or [report](results/jvm-native-comparison/report.md). Raw Gatling HTML/logs, OS thread IDs, process RSS, Docker API/DB CPU and memory, generator footprint, startup logs and container configuration are retained per runtime/profile. Five-second samples give observed maxima and a lower bound on distinct new threads, not exact lifetime peaks or total thread creations. Docker-to-health startup includes orchestration; application-reported startup is also retained separately.
+PowerShell uses `gradlew.bat`; set JAVA_HOME to JDK 17. The runner prints a new UTC-stamped `OUTPUT` directory before it starts; render and open that exact directory. The retained [dashboard](results/jvm-native-comparison/index.html) and [report](results/jvm-native-comparison/report.md) are historical bundled evidence, not the output of the command above. Raw Gatling HTML/logs, OS thread IDs, process RSS, Docker API/DB CPU and memory, generator footprint, startup logs and container configuration are retained per runtime/profile. Five-second samples give observed maxima and a lower bound on distinct new threads, not exact lifetime peaks or total thread creations. Docker-to-health startup includes orchestration; application-reported startup is also retained separately.
 
-A short capability check uses `--smoke --warmup 2 --duration 10 --output performance/work/my-smoke`. This is not part of the 30s/60s comparison. Completed profiles can be resumed only with identical durations; use a fresh output directory for a changed setup. Stop the comparison with `docker compose -p team-tasks-compare -f performance/compare-compose.yaml down`.
+A short capability check uses `--smoke --warmup 2 --duration 10 --output performance/work/my-smoke`. This is not part of the 30s/60s comparison. An explicit `--output` can deliberately resume completed profiles only with the identical profile matrix, runtimes and durations; a nonempty incomplete runtime directory is rejected rather than overwritten. Use a fresh output directory for a changed setup. Rendering links only metadata that exists inside the rendered directory, so a fresh run does not inherit validation claims from the bundled report. Stop the comparison with `docker compose -p team-tasks-compare -f performance/compare-compose.yaml down`.
 
 ## Separate JVM diagnostics
 

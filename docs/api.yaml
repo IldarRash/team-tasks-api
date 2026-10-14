@@ -57,8 +57,20 @@ paths:
               additionalProperties: false
               minProperties: 1
               properties:
-                name: {type: string, minLength: 1, maxLength: 200, pattern: '\S'}
-                description: {type: string, minLength: 1, maxLength: 10000, pattern: '\S'}
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 200
+                  x-max-utf16-code-units: 200
+                  pattern: '\S'
+                  description: Nonblank; the API accepts at most 200 UTF-16 code units.
+                description:
+                  type: string
+                  minLength: 1
+                  maxLength: 10000
+                  x-max-utf16-code-units: 10000
+                  pattern: '\S'
+                  description: Nonblank; the API accepts at most 10000 UTF-16 code units.
       responses:
         '200': {$ref: '#/components/responses/TaskResponse'}
         '400': {$ref: '#/components/responses/BadRequest'}
@@ -105,8 +117,20 @@ components:
       required: [teamId, name, description]
       properties:
         teamId: {type: integer, format: int64, minimum: 1}
-        name: {type: string, minLength: 1, maxLength: 200, pattern: '\S'}
-        description: {type: string, minLength: 1, maxLength: 10000, pattern: '\S'}
+        name:
+          type: string
+          minLength: 1
+          maxLength: 200
+          x-max-utf16-code-units: 200
+          pattern: '\S'
+          description: Nonblank; the API accepts at most 200 UTF-16 code units.
+        description:
+          type: string
+          minLength: 1
+          maxLength: 10000
+          x-max-utf16-code-units: 10000
+          pattern: '\S'
+          description: Nonblank; the API accepts at most 10000 UTF-16 code units.
     Task:
       type: object
       required: [id, teamId, name, description, priority]

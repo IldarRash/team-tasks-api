@@ -13,10 +13,11 @@ For a matched JVM/native comparison, set JAVA_HOME to JDK 17 and run from the re
 ```sh
 ./gradlew bootJar gatlingClasses
 python performance/compare_runtimes.py
-python performance/render_comparison.py performance/results/jvm-native-comparison
+# Render the exact OUTPUT directory printed by the previous command.
+python performance/render_comparison.py performance/results/jvm-native-comparison-YYYYMMDDTHHMMSSffffffZ
 ```
 
-On Windows use `gradlew.bat`. The comparison uses localhost port 8082 and its own PostgreSQL database volume. Only one API variant runs at a time. Each profile has a separate warmup and measured Gatling invocation. Restart both comparison services after a source change by rebuilding their images.
+On Windows use `gradlew.bat`. The comparison prints a new UTC-stamped output directory before it starts; use that exact path when rendering. The retained report remains at [performance/results/jvm-native-comparison/report.md](../performance/results/jvm-native-comparison/report.md). The comparison uses localhost port 8082 and its own PostgreSQL database volume. Only one API variant runs at a time. Each profile has a separate warmup and measured Gatling invocation. Restart both comparison services after a source change by rebuilding their images.
 
 Stop comparison containers while retaining data:
 

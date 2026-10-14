@@ -38,7 +38,17 @@ def render(directory):
             app = r.get('applicationStartupSeconds')
             gen = r.get('generatorRssMiB')
             lines.append(f"| {p['teams']} | {p['users']} | {runtime} | {app if app is not None else 'unavailable'} | {r['startupSeconds']:.2f} | {r.get('observedNewOsThreads','unavailable')} | {f'{gen:.1f}' if gen is not None else 'unavailable'} | {r.get('generatorOsThreads','unavailable')} |")
-    lines += ['', 'New thread IDs are distinct Linux thread IDs first seen in the measurement samples relative to the post-warmup baseline. Threads that start and finish between snapshots are not counted. Generator samples can be missing at process exit; sample coverage is retained in each summary.', '', '## Build and validation', '', '[Native build version and compiler footprint](native-build.json) · [Native HTTP/concurrency/restart validation](native-validation.json) · [PostgreSQL regression tests](regression.json)', '', 'The native compiler and JVM runtime have different Java patch versions; each version and image identity is retained. This comparison measures the two recorded runtime packages, with that version difference as a confounding factor. Compiler RSS is build-time memory, not API runtime RSS. Both variants use the same application code and database rules.', '']
+    lines += ['', 'New thread IDs are distinct Linux thread IDs first seen in the measurement samples relative to the post-warmup baseline. Threads that start and finish between snapshots are not counted. Generator samples can be missing at process exit; sample coverage is retained in each summary.', '', '## Build and validation', '']
+    metadata_links = [
+        ('native-build.json', 'Native build version and compiler footprint'),
+        ('native-validation.json', 'Native HTTP/concurrency/restart validation'),
+        ('regression.json', 'PostgreSQL regression tests'),
+    ]
+    available_links = [f'[{label}]({filename})' for filename, label in metadata_links if (directory / filename).exists()]
+    if available_links:
+        lines += [' · '.join(available_links), '', 'The native compiler and JVM runtime can use different Java patch versions; recorded versions and image identities identify that confounder. Compiler RSS is build-time memory, not API runtime RSS. Both variants use the same application code and database rules.', '']
+    else:
+        lines += ['No separate build or validation metadata was supplied for this measurement directory.', '']
     build_info = directory / 'native-build.json'
     if build_info.exists():
         build = json.loads(build_info.read_text(encoding='utf-8'))

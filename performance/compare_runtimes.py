@@ -139,38 +139,125 @@ def run(directory, runtime, teams, users, warmup, seconds):
     return summary
 
 
+def resume_summary(directory, runtime, teams, users, warmup, duration):
+    summary_path = directory / 'summary.json'
+    if summary_path.exists():
+        summary = json.loads(summary_path.read_text(encoding='utf-8'))
+        expected = {
+            'runtime': runtime, 'teams': teams, 'users': users,
+            'warmupSeconds': warmup, 'measurementSeconds': duration,
+        }
+        actual = {key: summary.get(key) for key in expected}
+        if actual != expected:
+            raise ValueError(
+                f'Existing {directory} has a different configuration; select a fresh output directory'
+            )
+        return summary
+    if directory.exists() and any(directory.iterdir()):
+        raise ValueError(
+            f'Refusing to overwrite incomplete runtime evidence in {directory}; select a fresh output directory'
+        )
+    return None
+
+
+def validate_existing_comparison(payload, requested_config):
+    recorded = payload.get('runConfig')
+    if recorded is not None:
+        if recorded != requested_config:
+            raise ValueError('Existing comparison uses a different configuration; select a fresh output directory')
+        return
+
+    methodology = payload.get('methodology', {})
+    if (methodology.get('warmupSeconds'), methodology.get('measurementSeconds')) != (
+        requested_config['warmupSeconds'], requested_config['measurementSeconds']
+    ):
+        raise ValueError('Existing comparison uses different durations; select a fresh output directory')
+    expected_profiles = requested_config['profiles']
+    existing_profiles = payload.get('profiles', [])
+    if len(existing_profiles) > len(expected_profiles):
+        raise ValueError('Existing comparison has a different profile matrix; select a fresh output directory')
+    for existing, expected in zip(existing_profiles, expected_profiles):
+        if (existing.get('teams'), existing.get('users')) != (expected['teams'], expected['users']):
+            raise ValueError('Existing comparison has a different profile matrix; select a fresh output directory')
+        present = sorted(runtime for runtime in ('jvm', 'native') if existing.get(runtime) is not None)
+        if present != requested_config['runtimes']:
+            raise ValueError('Existing comparison uses different runtimes; select a fresh output directory')
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('--output',default='performance/results/jvm-native-comparison')
+    parser.add_argument('--output')
     parser.add_argument('--warmup',type=int,default=30)
     parser.add_argument('--duration',type=int,default=60)
     parser.add_argument('--smoke',action='store_true')
     parser.add_argument('--runtimes',default='jvm,native')
     args=parser.parse_args()
-    output=(ROOT/args.output).resolve()
-    assert output.is_relative_to(ROOT/'performance')
-    output.mkdir(parents=True,exist_ok=True)
-    suite.command(COMPOSE+['up','-d','db'])
-    suite.command(COMPOSE+['build','jvm'])
+    runtimes = args.runtimes.split(',')
+    if not runtimes or any(runtime not in ('jvm', 'native') for runtime in runtimes) or len(set(runtimes)) != len(runtimes):
+        parser.error('--runtimes must be a comma-separated, non-repeating subset of jvm,native')
+    if args.warmup <= 0 or args.duration <= 0:
+        parser.error('--warmup and --duration must be positive seconds')
     profiles=[(1,2)] if args.smoke else [(1,20),(10,20),(100,20),(1000,20),(1000,100)]
-    payload={'profiles':[],'methodology':{'warmupSeconds':args.warmup,'measurementSeconds':args.duration,
-              'seedTasksPerTeam':10,'cpuLimit':2,'memoryLimitMiB':1024,'heapMaxMiB':512},
-             'generatedAt':dt.datetime.now(dt.timezone.utc).isoformat()}
-    info = json.loads(suite.command(['docker','info','--format','{{json .}}']).stdout)
-    payload['environment'] = {key:info.get(key) for key in ['NCPU','MemTotal','OSType','OperatingSystem','ServerVersion']}
+    requested_config = {
+        'profiles': [{'teams': teams, 'users': users} for teams, users in profiles],
+        'runtimes': sorted(runtimes), 'warmupSeconds': args.warmup, 'measurementSeconds': args.duration,
+    }
+    if args.output:
+        output=(ROOT/args.output).resolve()
+    else:
+        stamp = dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+        output = ROOT / 'performance/results' / f'jvm-native-comparison-{stamp}'
+    if not output.is_relative_to(ROOT/'performance'):
+        parser.error('--output must be under performance/')
+    comparison_path = output / 'comparison.json'
+    existing_payload = None
+    if output.exists():
+        if not args.output:
+            raise ValueError(f'Fresh default output already exists: {output}')
+        if comparison_path.exists():
+            existing_payload = json.loads(comparison_path.read_text(encoding='utf-8'))
+            validate_existing_comparison(existing_payload, requested_config)
+        elif any(output.iterdir()):
+            raise ValueError(f'Refusing to overwrite existing output without comparison.json: {output}')
+    else:
+        output.mkdir(parents=True)
+    print(f'OUTPUT {output}', flush=True)
+
+    resumed = {}
+    for teams, users in profiles:
+        for runtime in runtimes:
+            directory = output / f'teams-{teams}-users-{users}' / runtime
+            resumed[(teams, users, runtime)] = resume_summary(
+                directory, runtime, teams, users, args.warmup, args.duration
+            )
+    has_work = any(summary is None for summary in resumed.values())
+    if has_work:
+        suite.command(COMPOSE+['up','-d','db'])
+        suite.command(COMPOSE+['build','jvm'])
+        info = json.loads(suite.command(['docker','info','--format','{{json .}}']).stdout)
+        payload={
+            'profiles': [], 'runConfig': requested_config,
+            'methodology': {'warmupSeconds':args.warmup,'measurementSeconds':args.duration,
+                            'seedTasksPerTeam':10,'cpuLimit':2,'memoryLimitMiB':1024,'heapMaxMiB':512},
+            'generatedAt': (existing_payload or {}).get('generatedAt', dt.datetime.now(dt.timezone.utc).isoformat()),
+            'environment': {key:info.get(key) for key in ['NCPU','MemTotal','OSType','OperatingSystem','ServerVersion']},
+        }
+    else:
+        payload = existing_payload
     for profile_index,(teams,users) in enumerate(profiles):
         pair={'teams':teams,'users':users,'jvm':None,'native':None}
-        runtimes=args.runtimes.split(',')
-        if profile_index % 2 and set(runtimes)=={'jvm','native'}:
-            runtimes.reverse()
-        for runtime in runtimes:
-            assert runtime in ['jvm','native']
+        profile_runtimes = list(runtimes)
+        if profile_index % 2 and set(profile_runtimes)=={'jvm','native'}:
+            profile_runtimes.reverse()
+        for runtime in profile_runtimes:
             directory=output/f'teams-{teams}-users-{users}'/runtime
-            if (directory/'summary.json').exists():
-                pair[runtime]=json.loads((directory/'summary.json').read_text())
-                assert (pair[runtime]['warmupSeconds'], pair[runtime]['measurementSeconds']) == (args.warmup,args.duration), 'Existing results use another duration; select a fresh output directory'
+            summary = resumed[(teams, users, runtime)]
+            if summary is not None:
+                pair[runtime] = summary
+                print(f'RESUME {runtime} teams={teams} users={users}', flush=True)
             else:
                 pair[runtime]=run(directory,runtime,teams,users,args.warmup,args.duration)
-        payload['profiles'].append(pair)
-        (output/'comparison.json').write_text(json.dumps(payload,indent=2)+'\n')
+        if has_work:
+            payload['profiles'].append(pair)
+            comparison_path.write_text(json.dumps(payload,indent=2)+'\n')
     print(f'COMPLETE {output}',flush=True)
