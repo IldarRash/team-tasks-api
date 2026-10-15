@@ -1,0 +1,239 @@
+[
+    {
+        "Id": "1cf99832706742ecef959e5cc5e8a377f018edb78e9a3fe57421c99d4ca1c297",
+        "Created": "2026-10-15T03:59:26.34328408Z",
+        "Path": "/app/team-tasks-api",
+        "Args": [
+            "-Xms256m",
+            "-Xmx512m"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 18693,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-15T04:00:08.269402439Z",
+            "FinishedAt": "2026-10-15T04:00:07.83079951Z"
+        },
+        "Image": "sha256:f86beca338427a5ccd3c25c0414455d099c9d965d0e6975659845ea92315ae97",
+        "ResolvConfPath": "/var/lib/docker/containers/1cf99832706742ecef959e5cc5e8a377f018edb78e9a3fe57421c99d4ca1c297/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/1cf99832706742ecef959e5cc5e8a377f018edb78e9a3fe57421c99d4ca1c297/hostname",
+        "HostsPath": "/var/lib/docker/containers/1cf99832706742ecef959e5cc5e8a377f018edb78e9a3fe57421c99d4ca1c297/hosts",
+        "LogPath": "/var/lib/docker/containers/1cf99832706742ecef959e5cc5e8a377f018edb78e9a3fe57421c99d4ca1c297/1cf99832706742ecef959e5cc5e8a377f018edb78e9a3fe57421c99d4ca1c297-json.log",
+        "Name": "/team-tasks-api-api-1",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "team-tasks-api_default",
+            "PortBindings": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/ed9c5a1e521ee120d76ce092da30c0790c395c58fc6068e374b9aa5acfcd16bd-init/diff:/var/lib/docker/overlay2/u6aj08j1o2cwoelkpjbooxjuq/diff:/var/lib/docker/overlay2/plsu7iojj09gredrguwgxxvdb/diff:/var/lib/docker/overlay2/t6lr2xzyn6fhpsbwn5ef1s742/diff:/var/lib/docker/overlay2/1dc92b90a1d8a7770c34a3f6756aabb36199aac3ef82f4f9ea1087de7e53ddb1/diff",
+                "MergedDir": "/var/lib/docker/overlay2/ed9c5a1e521ee120d76ce092da30c0790c395c58fc6068e374b9aa5acfcd16bd/merged",
+                "UpperDir": "/var/lib/docker/overlay2/ed9c5a1e521ee120d76ce092da30c0790c395c58fc6068e374b9aa5acfcd16bd/diff",
+                "WorkDir": "/var/lib/docker/overlay2/ed9c5a1e521ee120d76ce092da30c0790c395c58fc6068e374b9aa5acfcd16bd/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "1cf998327067",
+            "Domainname": "",
+            "User": "app",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,metrics",
+                "DATABASE_URL=jdbc:postgresql://db:5432/taskdb",
+                "DATABASE_USER=tasks",
+                "DATABASE_PASSWORD=tasks",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": [
+                "-Xms256m",
+                "-Xmx512m"
+            ],
+            "Image": "team-tasks-api-native",
+            "Volumes": null,
+            "WorkingDir": "/app",
+            "Entrypoint": [
+                "/app/team-tasks-api"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "f6776c6bdb0675a3dd8890782949e8e4883f978bf133dec320bb245c14ac709a",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "db:service_healthy:false",
+                "com.docker.compose.image": "sha256:f86beca338427a5ccd3c25c0414455d099c9d965d0e6975659845ea92315ae97",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "team-tasks-api",
+                "com.docker.compose.project.config_files": "C:\\Users\\ilsac\\IdeaProjects\\jobsearch\\team-tasks-api\\compose.yaml",
+                "com.docker.compose.project.working_dir": "C:\\Users\\ilsac\\IdeaProjects\\jobsearch\\team-tasks-api",
+                "com.docker.compose.replace": "19754f81471d6cb7ca197f68fbdda22bbe20ae153c165a7b84964287cca9dc18",
+                "com.docker.compose.service": "api",
+                "com.docker.compose.version": "2.23.3",
+                "org.opencontainers.image.version": "22.04"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "2e9ab613740dd890c2be56cd37c2f449187d26946a285579f128eb6d6b9f50f0",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "SandboxKey": "/var/run/docker/netns/2e9ab613740d",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "team-tasks-api_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "team-tasks-api-api-1",
+                        "api",
+                        "1cf998327067"
+                    ],
+                    "MacAddress": "02:42:ac:14:00:03",
+                    "NetworkID": "6af9cb668a76cd9c58c267ec7baff733d3dbd481d064bf524f774c76c62eba79",
+                    "EndpointID": "fd1ae1940f15ebc6fde00fa6b5b4402bb2f66068d65c9618f6f31c1c1ac937e8",
+                    "Gateway": "172.20.0.1",
+                    "IPAddress": "172.20.0.3",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]

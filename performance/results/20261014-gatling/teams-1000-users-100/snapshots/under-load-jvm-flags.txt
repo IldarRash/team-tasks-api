@@ -1,2 +1,0 @@
-1:
--XX:ActiveProcessorCount=2 -XX:CICompilerCount=2 -XX:+FlightRecorder -XX:InitialHeapSize=268435456 -XX:MaxHeapSize=536870912 -XX:MaxNewSize=178913280 -XX:MinHeapDeltaBytes=196608 -XX:MinHeapSize=268435456 -XX:NativeMemoryTracking=summary -XX:NewSize=89456640 -XX:NonNMethodCodeHeapSize=5826188 -XX:NonProfiledCodeHeapSize=122916026 -XX:OldSize=178978816 -XX:ProfiledCodeHeapSize=122916026 -XX:ReservedCodeCacheSize=251658240 -XX:+SegmentedCodeCache -XX:SoftMaxHeapSize=536870912 -XX:-THPStackMitigation -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseSerialGC 

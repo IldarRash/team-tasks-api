@@ -1,9 +1,0 @@
-{
-  "sourceRevision": "a587eb3a029ab3c7a695e620f8c4990231bb055b",
-  "gitStatusAtRun": "",
-  "docker": "{\"Client\":{\"CloudIntegration\":\"v1.0.35+desktop.5\",\"Version\":\"24.0.7\",\"ApiVersion\":\"1.43\",\"DefaultAPIVersion\":\"1.43\",\"GitCommit\":\"afdd53b\",\"GoVersion\":\"go1.20.10\",\"Os\":\"windows\",\"Arch\":\"amd64\",\"BuildTime\":\"Thu Oct 26 09:08:44 2023\",\"Context\":\"default\"},\"Server\":{\"Platform\":{\"Name\":\"Docker Desktop 4.26.1 (131620)\"},\"Components\":[{\"Name\":\"Engine\",\"Version\":\"24.0.7\",\"Details\":{\"ApiVersion\":\"1.43\",\"Arch\":\"amd64\",\"BuildTime\":\"Thu Oct 26 09:08:02 2023\",\"Experimental\":\"false\",\"GitCommit\":\"311b9ff\",\"GoVersion\":\"go1.20.10\",\"KernelVersion\":\"6.18.54.1-microsoft-standard-WSL2\",\"MinAPIVersion\":\"1.12\",\"Os\":\"linux\"}},{\"Name\":\"containerd\",\"Version\":\"1.6.25\",\"Details\":{\"GitCommit\":\"d8f198a4ed8892c764191ef7b3b06d8a2eeb5c7f\"}},{\"Name\":\"runc\",\"Version\":\"1.1.10\",\"Details\":{\"GitCommit\":\"v1.1.10-0-g18a0cb0\"}},{\"Name\":\"docker-init\",\"Version\":\"0.19.0\",\"Details\":{\"GitCommit\":\"de40ad0\"}}],\"Version\":\"24.0.7\",\"ApiVersion\":\"1.43\",\"MinAPIVersion\":\"1.12\",\"GitCommit\":\"311b9ff\",\"GoVersion\":\"go1.20.10\",\"Os\":\"linux\",\"Arch\":\"amd64\",\"KernelVersion\":\"6.18.54.1-microsoft-standard-WSL2\",\"BuildTime\":\"2023-10-26T09:08:02.000000000+00:00\"}}\n",
-  "dockerResources": "16 CPUs; 16741457920 bytes memory\n",
-  "apiImage": "sha256:0d4370dc71d3ca42297023006afb5a89ab479b90f2237a7ef22303c221f9638f\n",
-  "java": "Picked up JAVA_TOOL_OPTIONS: -Xms256m -Xmx512m -XX:NativeMemoryTracking=summary -XX:ActiveProcessorCount=2\nopenjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)\n",
-  "startedUtc": "2026-10-14T18:37:20.030363+00:00"
-}

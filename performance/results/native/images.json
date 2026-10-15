@@ -1,0 +1,191 @@
+[
+    {
+        "Id": "sha256:f86beca338427a5ccd3c25c0414455d099c9d965d0e6975659845ea92315ae97",
+        "RepoTags": [
+            "team-tasks-api-native:latest"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-10-14T19:27:10.520010606Z",
+        "Container": "",
+        "ContainerConfig": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": null,
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": null
+        },
+        "DockerVersion": "",
+        "Author": "",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "app",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,metrics"
+            ],
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "/app",
+            "Entrypoint": [
+                "/app/team-tasks-api"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "org.opencontainers.image.version": "22.04"
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 191500886,
+        "VirtualSize": 191500886,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/plsu7iojj09gredrguwgxxvdb/diff:/var/lib/docker/overlay2/t6lr2xzyn6fhpsbwn5ef1s742/diff:/var/lib/docker/overlay2/1dc92b90a1d8a7770c34a3f6756aabb36199aac3ef82f4f9ea1087de7e53ddb1/diff",
+                "MergedDir": "/var/lib/docker/overlay2/u6aj08j1o2cwoelkpjbooxjuq/merged",
+                "UpperDir": "/var/lib/docker/overlay2/u6aj08j1o2cwoelkpjbooxjuq/diff",
+                "WorkDir": "/var/lib/docker/overlay2/u6aj08j1o2cwoelkpjbooxjuq/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:cbaf391e670933f026c05c7dedec3faf8f194b6c2d83b0d5694ad68323c8077c",
+                "sha256:cdccc48c1696a067c39aca5bca968f3a80b54bc328eddf12f2941d04093dbcae",
+                "sha256:00fe45522c759ef3e1290dc3097c078c1a567277d1e526c2499fb9114b6b5c9c",
+                "sha256:027b9dbb2204ae5d37a372ba02be2a7375ed55e8e7603e7b0604fb29c71d1903"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-10-14T19:27:11.023903041Z"
+        }
+    },
+    {
+        "Id": "sha256:cec64f636759afa0db6d27ec1486ed7fa22814ae58ce007eadc27e6b6e8376e4",
+        "RepoTags": [
+            "team-tasks-native-performance:latest"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-10-15T03:34:02.633077718Z",
+        "Container": "",
+        "ContainerConfig": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": null,
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": null
+        },
+        "DockerVersion": "",
+        "Author": "",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "app",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,metrics"
+            ],
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "/app",
+            "Entrypoint": [
+                "strace",
+                "-ff",
+                "-ttt",
+                "-T",
+                "-e",
+                "trace=clone,clone3",
+                "-e",
+                "signal=none",
+                "-s",
+                "4096",
+                "--seccomp-bpf",
+                "-o",
+                "/thread-trace/threads",
+                "/app/team-tasks-api"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.project": "team-tasks-native-performance",
+                "com.docker.compose.service": "api",
+                "com.docker.compose.version": "2.23.3",
+                "org.opencontainers.image.version": "22.04"
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 194583805,
+        "VirtualSize": 194583805,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/u6aj08j1o2cwoelkpjbooxjuq/diff:/var/lib/docker/overlay2/plsu7iojj09gredrguwgxxvdb/diff:/var/lib/docker/overlay2/t6lr2xzyn6fhpsbwn5ef1s742/diff:/var/lib/docker/overlay2/1dc92b90a1d8a7770c34a3f6756aabb36199aac3ef82f4f9ea1087de7e53ddb1/diff",
+                "MergedDir": "/var/lib/docker/overlay2/skzunzlwhagoabcn1p4zgxh6v/merged",
+                "UpperDir": "/var/lib/docker/overlay2/skzunzlwhagoabcn1p4zgxh6v/diff",
+                "WorkDir": "/var/lib/docker/overlay2/skzunzlwhagoabcn1p4zgxh6v/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:cbaf391e670933f026c05c7dedec3faf8f194b6c2d83b0d5694ad68323c8077c",
+                "sha256:cdccc48c1696a067c39aca5bca968f3a80b54bc328eddf12f2941d04093dbcae",
+                "sha256:00fe45522c759ef3e1290dc3097c078c1a567277d1e526c2499fb9114b6b5c9c",
+                "sha256:027b9dbb2204ae5d37a372ba02be2a7375ed55e8e7603e7b0604fb29c71d1903",
+                "sha256:cdee82222c66579a37d3274805a1199cfe8bb13b07aeed3d25b210ac76a060ed"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-10-15T03:48:52.720311935Z"
+        }
+    }
+]

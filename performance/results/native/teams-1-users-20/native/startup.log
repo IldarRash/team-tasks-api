@@ -1,0 +1,33 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.7)
+
+2026-10-15T03:49:04.395Z  INFO 10 --- [team-tasks-api] [           main] c.i.teamtasks.TeamTasksApplicationKt     : Starting AOT-processed TeamTasksApplicationKt using Java 17.0.9 with PID 10 (/app/team-tasks-api started by app in /app)
+2026-10-15T03:49:04.395Z  INFO 10 --- [team-tasks-api] [           main] c.i.teamtasks.TeamTasksApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2026-10-15T03:49:04.427Z  INFO 10 --- [team-tasks-api] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-10-15T03:49:04.428Z  INFO 10 --- [team-tasks-api] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-15T03:49:04.428Z  INFO 10 --- [team-tasks-api] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2026-10-15T03:49:04.444Z  INFO 10 --- [team-tasks-api] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-10-15T03:49:04.444Z  INFO 10 --- [team-tasks-api] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 49 ms
+2026-10-15T03:49:04.504Z  WARN 10 --- [team-tasks-api] [           main] o.f.c.i.s.classpath.ClassPathScanner     : Unable to scan location: /db/migration (unsupported protocol: resource)
+2026-10-15T03:49:04.504Z  WARN 10 --- [team-tasks-api] [           main] o.f.c.i.s.classpath.ClassPathScanner     : Unable to scan location: /db/migration (unsupported protocol: resource)
+2026-10-15T03:49:04.504Z  INFO 10 --- [team-tasks-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-15T03:49:04.524Z  INFO 10 --- [team-tasks-api] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2e5f4184
+2026-10-15T03:49:04.526Z  INFO 10 --- [team-tasks-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-15T03:49:04.528Z  INFO 10 --- [team-tasks-api] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://db:5432/taskdb (PostgreSQL 16.14)
+2026-10-15T03:49:04.541Z  INFO 10 --- [team-tasks-api] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.004s)
+2026-10-15T03:49:04.567Z  INFO 10 --- [team-tasks-api] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-10-15T03:49:04.568Z  INFO 10 --- [team-tasks-api] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-15T03:49:04.638Z  WARN 10 --- [team-tasks-api] [           main] i.m.c.i.binder.jvm.JvmGcMetrics          : GC notifications will not be available because no GarbageCollectorMXBean of the JVM provides any. GCs=[young generation scavenger, complete scavenger]
+2026-10-15T03:49:04.646Z  INFO 10 --- [team-tasks-api] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-10-15T03:49:04.662Z  INFO 10 --- [team-tasks-api] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-10-15T03:49:04.663Z  INFO 10 --- [team-tasks-api] [           main] c.i.teamtasks.TeamTasksApplicationKt     : Started TeamTasksApplicationKt in 0.286 seconds (process running for 0.289)
+2026-10-15T03:49:04.667Z  INFO 10 --- [team-tasks-api] [nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-15T03:49:04.667Z  INFO 10 --- [team-tasks-api] [nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-15T03:49:04.668Z  INFO 10 --- [team-tasks-api] [nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

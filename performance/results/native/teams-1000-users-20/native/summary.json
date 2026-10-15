@@ -1,0 +1,997 @@
+{
+  "runtime": "native",
+  "teams": 1000,
+  "users": 20,
+  "warmupSeconds": 30,
+  "measurementSeconds": 60,
+  "rps": 457.64,
+  "tps": 114.41,
+  "httpP95Ms": 87,
+  "transactionP95Ms": 219,
+  "rssMiB": 213.18359375,
+  "osThreads": 41,
+  "errors": 0,
+  "invariant": {
+    "dense": true,
+    "teams": 1000,
+    "tasks": 10000,
+    "seedTasksPreserved": true
+  },
+  "exactStartedOsThreads": 1,
+  "exactWarmupStartedOsThreads": 18,
+  "exactTotalStartedOsThreads": 42,
+  "threadCountMethod": "successful CLONE_THREAD clone/clone3 calls in initial API thread group; conservative Docker/Gatling epoch bounds",
+  "threadCountValidation": {
+    "measurement": {
+      "definite": 1,
+      "outside": 41,
+      "ambiguous": 0,
+      "definiteInside": [
+        {
+          "parentTid": 87,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036563016960000,
+          "returnEpochNs": 1792036563018772000,
+          "childTid": 206
+        }
+      ],
+      "definiteOutside": [
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513473189000,
+          "returnEpochNs": 1792036513473447000,
+          "childTid": 11
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513474923000,
+          "returnEpochNs": 1792036513475217000,
+          "childTid": 12
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513573232000,
+          "returnEpochNs": 1792036513573641000,
+          "childTid": 13
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513574051000,
+          "returnEpochNs": 1792036513574464000,
+          "childTid": 14
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513575318000,
+          "returnEpochNs": 1792036513575794000,
+          "childTid": 15
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513616598000,
+          "returnEpochNs": 1792036513616914000,
+          "childTid": 16
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513617938000,
+          "returnEpochNs": 1792036513618190000,
+          "childTid": 17
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513634402000,
+          "returnEpochNs": 1792036513634771000,
+          "childTid": 18
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513754002000,
+          "returnEpochNs": 1792036513754371000,
+          "childTid": 19
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513754734000,
+          "returnEpochNs": 1792036513755088000,
+          "childTid": 20
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513755301000,
+          "returnEpochNs": 1792036513755568000,
+          "childTid": 21
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513755742000,
+          "returnEpochNs": 1792036513755990000,
+          "childTid": 22
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513756217000,
+          "returnEpochNs": 1792036513756598000,
+          "childTid": 23
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513756771000,
+          "returnEpochNs": 1792036513757207000,
+          "childTid": 24
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513757387000,
+          "returnEpochNs": 1792036513757880000,
+          "childTid": 25
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513758106000,
+          "returnEpochNs": 1792036513758574000,
+          "childTid": 26
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513758811000,
+          "returnEpochNs": 1792036513759270000,
+          "childTid": 27
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513759536000,
+          "returnEpochNs": 1792036513760115000,
+          "childTid": 28
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513760658000,
+          "returnEpochNs": 1792036513761243000,
+          "childTid": 29
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513761582000,
+          "returnEpochNs": 1792036513762193000,
+          "childTid": 30
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036521852919000,
+          "returnEpochNs": 1792036521853748000,
+          "childTid": 79
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036521891561000,
+          "returnEpochNs": 1792036521892238000,
+          "childTid": 80
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036521990983000,
+          "returnEpochNs": 1792036521991681000,
+          "childTid": 81
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522021447000,
+          "returnEpochNs": 1792036522022469000,
+          "childTid": 82
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522134217000,
+          "returnEpochNs": 1792036522135123000,
+          "childTid": 83
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522144153000,
+          "returnEpochNs": 1792036522145140000,
+          "childTid": 84
+        },
+        {
+          "parentTid": 23,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522145409000,
+          "returnEpochNs": 1792036522146610000,
+          "childTid": 85
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522161407000,
+          "returnEpochNs": 1792036522162342000,
+          "childTid": 86
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522206139000,
+          "returnEpochNs": 1792036522207163000,
+          "childTid": 87
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522212818000,
+          "returnEpochNs": 1792036522213876000,
+          "childTid": 88
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522221138000,
+          "returnEpochNs": 1792036522222968000,
+          "childTid": 89
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522427488000,
+          "returnEpochNs": 1792036522428697000,
+          "childTid": 90
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522490965000,
+          "returnEpochNs": 1792036522491970000,
+          "childTid": 91
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522727507000,
+          "returnEpochNs": 1792036522728994000,
+          "childTid": 92
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036523291844000,
+          "returnEpochNs": 1792036523293733000,
+          "childTid": 93
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036523991287000,
+          "returnEpochNs": 1792036523993007000,
+          "childTid": 94
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036526218076000,
+          "returnEpochNs": 1792036526223541000,
+          "childTid": 95
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036547737147000,
+          "returnEpochNs": 1792036547738250000,
+          "childTid": 96
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036551441327000,
+          "returnEpochNs": 1792036551441687000,
+          "childTid": 97
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036621905799000,
+          "returnEpochNs": 1792036621906304000,
+          "childTid": 340
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036621906694000,
+          "returnEpochNs": 1792036621907144000,
+          "childTid": 341
+        }
+      ],
+      "ambiguousEvents": [],
+      "exactCountAvailable": true,
+      "offsetLowerNs": -1108376,
+      "offsetUpperNs": 2275927,
+      "httpMarginNs": 1000000
+    },
+    "warmup": {
+      "definite": 18,
+      "outside": 24,
+      "ambiguous": 0,
+      "definiteInside": [
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036521852919000,
+          "returnEpochNs": 1792036521853748000,
+          "childTid": 79
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036521891561000,
+          "returnEpochNs": 1792036521892238000,
+          "childTid": 80
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036521990983000,
+          "returnEpochNs": 1792036521991681000,
+          "childTid": 81
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522021447000,
+          "returnEpochNs": 1792036522022469000,
+          "childTid": 82
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522134217000,
+          "returnEpochNs": 1792036522135123000,
+          "childTid": 83
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522144153000,
+          "returnEpochNs": 1792036522145140000,
+          "childTid": 84
+        },
+        {
+          "parentTid": 23,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522145409000,
+          "returnEpochNs": 1792036522146610000,
+          "childTid": 85
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522161407000,
+          "returnEpochNs": 1792036522162342000,
+          "childTid": 86
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522206139000,
+          "returnEpochNs": 1792036522207163000,
+          "childTid": 87
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522212818000,
+          "returnEpochNs": 1792036522213876000,
+          "childTid": 88
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522221138000,
+          "returnEpochNs": 1792036522222968000,
+          "childTid": 89
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522427488000,
+          "returnEpochNs": 1792036522428697000,
+          "childTid": 90
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522490965000,
+          "returnEpochNs": 1792036522491970000,
+          "childTid": 91
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522727507000,
+          "returnEpochNs": 1792036522728994000,
+          "childTid": 92
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036523291844000,
+          "returnEpochNs": 1792036523293733000,
+          "childTid": 93
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036523991287000,
+          "returnEpochNs": 1792036523993007000,
+          "childTid": 94
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036526218076000,
+          "returnEpochNs": 1792036526223541000,
+          "childTid": 95
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036547737147000,
+          "returnEpochNs": 1792036547738250000,
+          "childTid": 96
+        }
+      ],
+      "definiteOutside": [
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513473189000,
+          "returnEpochNs": 1792036513473447000,
+          "childTid": 11
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513474923000,
+          "returnEpochNs": 1792036513475217000,
+          "childTid": 12
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513573232000,
+          "returnEpochNs": 1792036513573641000,
+          "childTid": 13
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513574051000,
+          "returnEpochNs": 1792036513574464000,
+          "childTid": 14
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513575318000,
+          "returnEpochNs": 1792036513575794000,
+          "childTid": 15
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513616598000,
+          "returnEpochNs": 1792036513616914000,
+          "childTid": 16
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513617938000,
+          "returnEpochNs": 1792036513618190000,
+          "childTid": 17
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513634402000,
+          "returnEpochNs": 1792036513634771000,
+          "childTid": 18
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513754002000,
+          "returnEpochNs": 1792036513754371000,
+          "childTid": 19
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513754734000,
+          "returnEpochNs": 1792036513755088000,
+          "childTid": 20
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513755301000,
+          "returnEpochNs": 1792036513755568000,
+          "childTid": 21
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513755742000,
+          "returnEpochNs": 1792036513755990000,
+          "childTid": 22
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513756217000,
+          "returnEpochNs": 1792036513756598000,
+          "childTid": 23
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513756771000,
+          "returnEpochNs": 1792036513757207000,
+          "childTid": 24
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513757387000,
+          "returnEpochNs": 1792036513757880000,
+          "childTid": 25
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513758106000,
+          "returnEpochNs": 1792036513758574000,
+          "childTid": 26
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513758811000,
+          "returnEpochNs": 1792036513759270000,
+          "childTid": 27
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513759536000,
+          "returnEpochNs": 1792036513760115000,
+          "childTid": 28
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513760658000,
+          "returnEpochNs": 1792036513761243000,
+          "childTid": 29
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513761582000,
+          "returnEpochNs": 1792036513762193000,
+          "childTid": 30
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036551441327000,
+          "returnEpochNs": 1792036551441687000,
+          "childTid": 97
+        },
+        {
+          "parentTid": 87,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036563016960000,
+          "returnEpochNs": 1792036563018772000,
+          "childTid": 206
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036621905799000,
+          "returnEpochNs": 1792036621906304000,
+          "childTid": 340
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036621906694000,
+          "returnEpochNs": 1792036621907144000,
+          "childTid": 341
+        }
+      ],
+      "ambiguousEvents": [],
+      "exactCountAvailable": true,
+      "offsetLowerNs": -786633,
+      "offsetUpperNs": 2460311,
+      "httpMarginNs": 1000000
+    },
+    "total": {
+      "definite": 42,
+      "outside": 0,
+      "ambiguous": 0,
+      "definiteInside": [
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513473189000,
+          "returnEpochNs": 1792036513473447000,
+          "childTid": 11
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513474923000,
+          "returnEpochNs": 1792036513475217000,
+          "childTid": 12
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513573232000,
+          "returnEpochNs": 1792036513573641000,
+          "childTid": 13
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513574051000,
+          "returnEpochNs": 1792036513574464000,
+          "childTid": 14
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513575318000,
+          "returnEpochNs": 1792036513575794000,
+          "childTid": 15
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513616598000,
+          "returnEpochNs": 1792036513616914000,
+          "childTid": 16
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513617938000,
+          "returnEpochNs": 1792036513618190000,
+          "childTid": 17
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513634402000,
+          "returnEpochNs": 1792036513634771000,
+          "childTid": 18
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513754002000,
+          "returnEpochNs": 1792036513754371000,
+          "childTid": 19
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513754734000,
+          "returnEpochNs": 1792036513755088000,
+          "childTid": 20
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513755301000,
+          "returnEpochNs": 1792036513755568000,
+          "childTid": 21
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513755742000,
+          "returnEpochNs": 1792036513755990000,
+          "childTid": 22
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513756217000,
+          "returnEpochNs": 1792036513756598000,
+          "childTid": 23
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513756771000,
+          "returnEpochNs": 1792036513757207000,
+          "childTid": 24
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513757387000,
+          "returnEpochNs": 1792036513757880000,
+          "childTid": 25
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513758106000,
+          "returnEpochNs": 1792036513758574000,
+          "childTid": 26
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513758811000,
+          "returnEpochNs": 1792036513759270000,
+          "childTid": 27
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513759536000,
+          "returnEpochNs": 1792036513760115000,
+          "childTid": 28
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513760658000,
+          "returnEpochNs": 1792036513761243000,
+          "childTid": 29
+        },
+        {
+          "parentTid": 10,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036513761582000,
+          "returnEpochNs": 1792036513762193000,
+          "childTid": 30
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036521852919000,
+          "returnEpochNs": 1792036521853748000,
+          "childTid": 79
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036521891561000,
+          "returnEpochNs": 1792036521892238000,
+          "childTid": 80
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036521990983000,
+          "returnEpochNs": 1792036521991681000,
+          "childTid": 81
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522021447000,
+          "returnEpochNs": 1792036522022469000,
+          "childTid": 82
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522134217000,
+          "returnEpochNs": 1792036522135123000,
+          "childTid": 83
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522144153000,
+          "returnEpochNs": 1792036522145140000,
+          "childTid": 84
+        },
+        {
+          "parentTid": 23,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522145409000,
+          "returnEpochNs": 1792036522146610000,
+          "childTid": 85
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522161407000,
+          "returnEpochNs": 1792036522162342000,
+          "childTid": 86
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522206139000,
+          "returnEpochNs": 1792036522207163000,
+          "childTid": 87
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522212818000,
+          "returnEpochNs": 1792036522213876000,
+          "childTid": 88
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522221138000,
+          "returnEpochNs": 1792036522222968000,
+          "childTid": 89
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522427488000,
+          "returnEpochNs": 1792036522428697000,
+          "childTid": 90
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522490965000,
+          "returnEpochNs": 1792036522491970000,
+          "childTid": 91
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036522727507000,
+          "returnEpochNs": 1792036522728994000,
+          "childTid": 92
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036523291844000,
+          "returnEpochNs": 1792036523293733000,
+          "childTid": 93
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036523991287000,
+          "returnEpochNs": 1792036523993007000,
+          "childTid": 94
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036526218076000,
+          "returnEpochNs": 1792036526223541000,
+          "childTid": 95
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036547737147000,
+          "returnEpochNs": 1792036547738250000,
+          "childTid": 96
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036551441327000,
+          "returnEpochNs": 1792036551441687000,
+          "childTid": 97
+        },
+        {
+          "parentTid": 87,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036563016960000,
+          "returnEpochNs": 1792036563018772000,
+          "childTid": 206
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036621905799000,
+          "returnEpochNs": 1792036621906304000,
+          "childTid": 340
+        },
+        {
+          "parentTid": 29,
+          "syscall": "clone3",
+          "entryEpochNs": 1792036621906694000,
+          "returnEpochNs": 1792036621907144000,
+          "childTid": 341
+        }
+      ],
+      "definiteOutside": [],
+      "ambiguousEvents": [],
+      "exactCountAvailable": true
+    },
+    "trace": {
+      "exactCountAvailable": true,
+      "fatalErrors": [],
+      "unavailableReasons": [],
+      "traceFiles": 43
+    },
+    "threadGroupTids": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      206,
+      340,
+      341
+    ]
+  }
+}

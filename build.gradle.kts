@@ -53,7 +53,7 @@ gatling {
         "--add-opens=java.base/java.lang=ALL-UNNAMED", "--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED")
     systemProperties = listOf("baseUrl", "teams", "users", "durationSeconds", "teamBaseId")
         .associateWith { System.getProperty(it, mapOf(
-            "baseUrl" to "http://127.0.0.1:8081", "teams" to "1", "users" to "20",
+            "baseUrl" to "http://127.0.0.1:8084", "teams" to "1", "users" to "20",
             "durationSeconds" to "60", "teamBaseId" to "7000000000000"
         ).getValue(it)) }
 }

@@ -1,11 +1,10 @@
 .git
 .gradle
-build/*
-!build/libs/
-build/libs/*
-!build/libs/team-tasks-api.jar
-output
+.kotlin
 .idea
+__pycache__
+build
+output
 .env
 performance/results/
 performance/work/

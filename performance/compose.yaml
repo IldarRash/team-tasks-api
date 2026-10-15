@@ -1,12 +1,8 @@
 services:
   db:
     image: postgres:16-alpine
-    environment:
-      POSTGRES_DB: taskdb
-      POSTGRES_USER: tasks
-      POSTGRES_PASSWORD: tasks
-    volumes:
-      - benchmark-data:/var/lib/postgresql/data
+    environment: {POSTGRES_DB: taskdb, POSTGRES_USER: tasks, POSTGRES_PASSWORD: tasks}
+    volumes: [native-performance-data:/var/lib/postgresql/data]
     cpus: 2
     mem_limit: 1g
     healthcheck:
@@ -18,18 +14,17 @@ services:
     build:
       context: ..
       dockerfile: performance/Dockerfile
+    image: team-tasks-native-performance
     environment:
       DATABASE_URL: jdbc:postgresql://db:5432/taskdb
       DATABASE_USER: tasks
       DATABASE_PASSWORD: tasks
-      JAVA_TOOL_OPTIONS: -Xms256m -Xmx512m -XX:NativeMemoryTracking=summary -XX:ActiveProcessorCount=2
       MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health,metrics
-    ports:
-      - "127.0.0.1:8081:8080"
+    command: ["-Xms256m", "-Xmx512m"]
+    ports: ["127.0.0.1:8084:8080"]
     cpus: 2
     mem_limit: 1g
     depends_on:
-      db:
-        condition: service_healthy
+      db: {condition: service_healthy}
 volumes:
-  benchmark-data:
+  native-performance-data:

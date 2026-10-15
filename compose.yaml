@@ -16,10 +16,13 @@ services:
       retries: 30
   api:
     build: .
+    image: team-tasks-api-native
+    command: ["-Xms256m", "-Xmx512m"]
     environment:
       DATABASE_URL: jdbc:postgresql://db:5432/taskdb
       DATABASE_USER: tasks
       DATABASE_PASSWORD: tasks
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health,metrics
     ports:
       - "127.0.0.1:8080:8080"
     depends_on:

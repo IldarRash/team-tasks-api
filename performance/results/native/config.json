@@ -1,0 +1,11 @@
+{
+  "methodology": {
+    "exactThreadTracing": true,
+    "warmupSeconds": 30,
+    "measurementSeconds": 60,
+    "cpuLimit": 2,
+    "memoryLimitMiB": 1024,
+    "heapMaxMiB": 512
+  },
+  "profiles": []
+}

@@ -1,5 +1,0 @@
-{
-  "passed": true,
-  "operation": "docker compose -p team-tasks-api restart api",
-  "allTaskFieldsPreserved": true
-}

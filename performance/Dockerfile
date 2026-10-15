@@ -1,7 +1,11 @@
-FROM eclipse-temurin:17-jdk
-WORKDIR /app
-RUN groupadd --system app && useradd --system --gid app app
-COPY build/libs/team-tasks-api.jar app.jar
+FROM team-tasks-api-native
+
+USER root
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends strace \
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /thread-trace \
+    && chown app:app /thread-trace
+
 USER app
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["strace", "-ff", "-ttt", "-T", "-e", "trace=clone,clone3", "-e", "signal=none", "-s", "4096", "--seccomp-bpf", "-o", "/thread-trace/threads", "/app/team-tasks-api"]
